@@ -1,5 +1,6 @@
 package com.cos.baseball.domain.ballpark;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -28,6 +29,6 @@ public class Ballpark {
 	@Column(nullable = false)
 	private String parkName;
 	
-	@OneToOne(mappedBy = "ballpark")
+	@OneToOne(mappedBy = "ballpark", cascade = CascadeType.REMOVE)
 	private Team team;
 }

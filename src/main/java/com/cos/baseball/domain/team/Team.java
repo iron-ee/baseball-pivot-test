@@ -1,5 +1,6 @@
 package com.cos.baseball.domain.team;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -29,7 +30,7 @@ public class Team {
 	@Column(nullable = false)
 	private String teamName;
 	
-	@OneToOne
+	@OneToOne(cascade = CascadeType.DETACH)
 	@JoinColumn(name = "ballparkId")
 	private Ballpark ballpark;
 }

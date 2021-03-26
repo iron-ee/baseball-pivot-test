@@ -3,7 +3,7 @@
 <%@ include file="../layout/header.jsp" %>    
 
 	<div class="container">
-	  <h2>팀 등록 페이지</h2>
+	  <h2>선수 등록 페이지</h2>
 	  <br/>
 	  <form action="/playerAdd" method="post" class="was-validated">
 	    <div class="form-group">

@@ -1,5 +1,7 @@
 package com.cos.baseball.web;
 
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.cos.baseball.service.PlayerService;
 import com.cos.baseball.service.TeamService;
 import com.cos.baseball.web.dto.CMRespDto;
+import com.cos.baseball.web.dto.PlayerPositionRespDto;
 import com.cos.baseball.web.player.dto.PlayerSaveReqDto;
 
 import lombok.RequiredArgsConstructor;
@@ -44,5 +47,12 @@ public class PlayerController {
 	public @ResponseBody CMRespDto<?> deleteById(@PathVariable int id) {
 		playerService.삭제하기(id);
 		return new CMRespDto<>(1, null);
+	}
+	
+	@GetMapping("/position")
+	public String position(Model model) {
+		List<PlayerPositionRespDto> dtos = playerService.포지션별선수리스트();
+		model.addAttribute("dtos", dtos);
+		return "player/position";
 	}
 }
